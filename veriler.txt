@@ -1,0 +1,3 @@
+https://stats.oecd.org : Sağlık
+https://www.cia.gov/the-world-factbook/references/guide-to-country-comparisons/ : Genel
+https://www.kaggle.com/datasets/unsdsn/world-happiness
