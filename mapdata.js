@@ -1,3 +1,4 @@
+
 var simplemaps_worldmap_mapdata={
   main_settings: {
     //General settings
@@ -10,7 +11,7 @@ var simplemaps_worldmap_mapdata={
 		state_description: "No Info",
     state_color: "#000000",
     state_hover_color: "#3B729F",
-    state_url: "https://simplemaps.com",
+    state_url: "",
     border_size: 1.5,
     border_color: "#ffffff",
     all_states_inactive: "no",
@@ -71,6 +72,17 @@ var simplemaps_worldmap_mapdata={
     fade_time: 0.1,
     link_text: "View Website"
   },
+  locations: {
+    /*"0": {
+      name: "Paris",
+      lat: "48.866666670",
+      lng: "2.333333333",
+      color: "default",
+      description: "default",
+      url: "default"
+    }*/
+  },
+  labels: {},
   state_specific: {
     AF: {
       name: "Afghanistan",
@@ -1570,16 +1582,6 @@ var simplemaps_worldmap_mapdata={
       hover_color: "default",
       url: "default"
     }
-  },
-  locations: {
-    /*"0": {
-      name: "Paris",
-      lat: "48.866666670",
-      lng: "2.333333333",
-      color: "default",
-      description: "default",
-      url: "default"
-    }*/
-  },
-  labels: {}
+  }
 };
+simplemaps_worldmap_mapdata.state_specific.TR.color="#FF0000";
