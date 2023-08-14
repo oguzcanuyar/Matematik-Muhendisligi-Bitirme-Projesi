@@ -2,30 +2,30 @@
 var simplemaps_worldmap_mapdata={
   main_settings: {
     //General settings
-		width: "responsive", //or 'responsive'
-    background_color: "#FFFFFF",
+		width: "responsive",
+    background_color: "#0092ca",
     background_transparent: "yes",
     popups: "detect",
     
 		//State defaults
 		state_description: "No Info",
-    state_color: "#000000",
-    state_hover_color: "#3B729F",
+    state_color: "#222831",
+    state_hover_color: "#0092ca",
     state_url: "",
-    border_size: 1.5,
-    border_color: "#ffffff",
+    border_size: 0.5,
+    border_color: "#eeeeee",
     all_states_inactive: "no",
     all_states_zoomable: "no",
     
 		//Location defaults
 		location_description: "Location description",
-    location_color: "#FF0067",
+    location_color: "#222831",
     location_opacity: 0.8,
     location_hover_opacity: 1,
     location_url: "",
     location_size: 25,
     location_type: "square",
-    location_border_color: "#FFFFFF",
+    location_border_color: "#222831",
     location_border: 2,
     location_hover_border: 2.5,
     all_locations_inactive: "no",
@@ -39,13 +39,13 @@ var simplemaps_worldmap_mapdata={
     hide_labels: "no",
    
 		//Zoom settings
-		manual_zoom: "yes",
+		manual_zoom: "no",
     back_image: "no",
-    arrow_box: "no",
+    arrow_box: "yes",
     navigation_size: "40",
     navigation_color: "#f7f7f7",
     navigation_border_color: "#636363",
-    initial_back: "no",
+    initial_back: "yes",
     initial_zoom: -1,
     initial_zoom_solo: "no",
     region_opacity: 1,
@@ -1128,7 +1128,7 @@ var simplemaps_worldmap_mapdata={
       url: "default"
     },
     TR: {
-      name: "Turkey",
+      name: "Turkey (Turkiye)",
       description: "default",
       color: "default",
       hover_color: "default",
@@ -1584,4 +1584,36 @@ var simplemaps_worldmap_mapdata={
     }
   }
 };
-simplemaps_worldmap_mapdata.state_specific.TR.color="#FF0000";
+
+var obj = JSON.parse(countryList);
+var worldData = obj[0];
+
+var maxHappyIndex = worldData["Finland"].happyScore;
+var lowestHappyIndex = worldData["South Sudan"].happyScore;
+
+for(var e in simplemaps_worldmap_mapdata.state_specific){
+  var country = simplemaps_worldmap_mapdata.state_specific[e];
+  var countryData = worldData[country.name];
+
+
+  if(countryData != null){
+    var happyIndex = countryData.happyScore;
+    
+    var res = (happyIndex - lowestHappyIndex)/(maxHappyIndex-lowestHappyIndex);
+    var f = rgbToHex(Math.ceil(res*255), Math.ceil(res*255), Math.ceil(res*255)); // #0033ff
+    country.color = f;
+
+    var description =  'happyScore :'+countryData.happyScore + '<br>'+'socialSupport :'+countryData.socialSupport + '<br>'+'lifeExpectancy :'+countryData.lifeExpectancy + '<br>'+'freedom_lifeChoices :'+countryData.freedom_lifeChoices + '<br>'+'Generosity :'+countryData.Generosity + '<br>'+'perceptionsOfCorruption :'+countryData.perceptionsOfCorruption + '<br>'+'airports :'+countryData.airports + '<br>'+'alcohol :'+countryData.alcohol + '<br>'+'birthRate :'+countryData.birthRate + '<br>'+'deathRate :'+countryData.deathRate + '<br>'+'gdpPerCapita :'+countryData.gdpPerCapita + '<br>'+'internetUsers :'+countryData.internetUsers + '<br>'+'medianAge :'+countryData.medianAge + '<br>'+'migrationRate :'+countryData.migrationRate + '<br>'+'obesity :'+countryData.obesity + '<br>'+'population :'+countryData.population + '<br>'+'railways :'+countryData.railways + '<br>'+'roadways :'+countryData.roadways + '<br>'+'taxRate :'+countryData.taxRate + '<br>'+'youthUnemployment:'+countryData.youthUnemployment;
+    country.description = description;
+  }
+}
+
+
+function componentToHex(c) {
+  var hex = c.toString(16);
+  return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+  return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}

@@ -1,10 +1,3 @@
-/*Copyright 2010-2022 Simplemaps.com
-html5worldmapv4.214 
-Use pursuant to license agreement at https://simplemaps.com/license */
-
-/* shifty - v1.5.3 - http://jeremyckahn.github.io/shifty, embedded within map logic*/
-
-/* Raphaël 2.1.2 (tweaked, always global)- JavaScript Vector Library, Copyright © 2008-2016 Dmitry Baranovskiy (http://raphaeljs.com), Copyright © 2008-2016 Sencha Labs (http://sencha.com), Licensed under the MIT (http://raphaeljs.com/license.html) license. */
 ! function(t) {
     var e, f, p, a, d, g, x, y, m;
     t.eve = (e = "0.4.2", f = "hasOwnProperty", p = /[\.\/]/, a = function() {}, d = function(t, e) {
